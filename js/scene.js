@@ -877,7 +877,7 @@
     opts = opts || {};
     var baseFactor = opts.baseFactor != null ? opts.baseFactor : 1.22;
     var gapFactor = opts.gapFactor != null ? opts.gapFactor : 0.6;
-    var stepFactor = opts.stepFactor != null ? opts.stepFactor : 2.55;
+    var stepFactor = opts.stepFactor != null ? opts.stepFactor : 2.45;
     var minBase = opts.minBase || 0;
     var minStep = opts.minStep || 0;
     if (!kids.length) return [];
@@ -895,7 +895,7 @@
     });
 
     var base = Math.max(parentRadius + maxR * baseFactor, minBase);
-    var step = Math.max(maxR * stepFactor, (maxR * 2 + gap) * 0.92, minStep);
+    var step = Math.max(maxR * stepFactor * 1.07, (maxR * 2 + gap) * 1.07, minStep);
     var prev = null;
     var out = [];
     enriched.forEach(function (e, i) {

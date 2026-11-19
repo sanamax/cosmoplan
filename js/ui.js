@@ -698,11 +698,17 @@
         toast("Создан объект: " + created.name, "ok");
         S.setSelection(created.id);
         openCard(created.id);
+        var childView = viewForType(created.type);
+        if (S.view() !== childView) {
+          window.CosmoScene.rememberCamera();
+          S.setView(childView);
+          S.setSelection(created.id);
+        }
         setTimeout(function () {
-          var view = viewForType(created.type);
-          if (S.view() !== view) switchView(view, created.id);
-          else window.CosmoScene.focus(created.id);
-        }, 80);
+          if (!window.CosmoScene.focus(created.id)) {
+            setTimeout(function () { window.CosmoScene.focus(created.id); }, 160);
+          }
+        }, 130);
       });
     }
 
